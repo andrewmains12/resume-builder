@@ -28,17 +28,14 @@
 (defpartial header [{:keys [resume-name, address, number, email] :as contact-info}]
   [:div#header 
    [:h1 resume-name]
-   [:ul#contact
-    (for [[key, val] contact-info]
-      (if (not= key :resume-name)
-        [:li
-         {:id (name key)}
-         val]))
-    ]
+   (table {:id "contact"}
+          [address]
+          [number email]
+          )          
    ]
   )
 
-(defpartial ^:private base-section [title type & items]
+(defpartial ^:private base-section [type title & items]
   [:div {:class (str "Section " (name type))}
    [:h2 title]
    items
@@ -46,43 +43,52 @@
   )
 
 (defmulti section
-  (fn [title type & items]
+  (fn [type title & items]
     type
     )
   :default
   :BaseSection
   )
 
-(defmethod section :BaseSection [title type & items]
-  (base-section title type items)
+(defmethod section :BaseSection [type title & items]
+  (println "Called base!")
+  (base-section type title items)
   )
 
                           
-(defmethod section :Experience [title type & positions]
-  (base-section title type
+(defmethod section :Experience [type title & positions]
+  (println "Experience")
+  (base-section type title
                 positions))
 
-(defmethod section :Objective [title type & objective-copy]
-  (base-section title type
+(defmethod section :Objective [type title & objective-copy]
+  (base-section type title
                 objective-copy))
 
-(defmethod section :Skills [title type & skill-items]
-  (base-section title type
+(defmethod section :Skills [type title & skill-items]
+  (base-section type title
                 (unordered-list skill-items)))
 
-(defmethod section :Education [title type & schools]
-  (base-section title type
+(defmethod section :Education [type title & schools]
+  (base-section type title
                 (unordered-list schools)))
 
+(defmethod section :ClassProjects [type title & projects]
+  (base-section type title
+                (unordered-list projects)))
 
-(defpartial school [institution location degree dates]  
-  ;;TODO: implement an easier way of composing classes
-  (affiliation {:class "School Affiliation"}
-   institution
-   location
-   degree
-   dates)
-   )
+(defpartial school [{:keys [institution location degree dates & gpa] :as info}]  
+  [:div.School
+   (affiliation
+    institution
+    location
+    (if gpa (str degree " " (html [:span.GPA gpa])) degree)
+    dates
+    )
+   ]
+  )
+
+  
 
 (defpartial position [{:keys [company location title dates]} & details]
   [:div.Position
@@ -91,7 +97,6 @@
    location
    title
    dates)
-
    details
    ]
   )

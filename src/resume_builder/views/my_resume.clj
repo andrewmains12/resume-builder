@@ -7,13 +7,13 @@
 
 (defpartial the-resume []
   (resume
-   (header {:resume-name "Andrew Robert Mains",
+   (header (array-map :resume-name "Andrew Robert Mains",
             :address (address {:street "1624 Milvia Apt 6"
                                :city "Berkeley" :state "CA" :zip "94709"
                                })
             :number "408-710-2521"
             :email "andrewmains12@berkeley.edu"
-            }
+            )
            )
 
    ;;Sections   
@@ -21,11 +21,26 @@
              "A full time software engineering position, ideally with a focus on language/runtime implementation and or distributed systems."
              )
 
+    (section :Education "EDUCATION"
+             (school (array-map
+                      :institution "UC Berkeley"
+                      :location "Berkeley, CA"
+                      :degree "B.A., Computer Science, Cognitive Science"
+                      :gpa "GPA: 3.86"
+                      :dates "December 2012")
+                     )
+             )
+
+    (section :Skills "SKILLS AND TECHNOLOGIES"
+             ["Languages: Python, Java, C/C++, Ruby, SQL,  Scheme, R, Clojure (currently learning)"
+              "Technologies: Hadoop, Hive, Rails, Django, Noir, ANTLR, Bison/Flex"
+              ])
     (section :Experience "EXPERIENCE"
-             (position {:company "Oracle"
-                       :location "Redwood Shores"
-                       :title "Software Engineering Intern"
-                        :dates"Summer 2012"}
+             (position (array-map
+                        :company "Oracle"
+                        :location "Redwood Shores"
+                        :title "Software Engineering Intern"
+                        :dates"Summer 2012")
 
                        (project "SAS to R Converter"
                                 [
@@ -35,7 +50,8 @@
                        
                         
              )
-             ))
+             )
+    )
   )
-   ;; (for [i (range 1 3)] (str "Section" i)))))
+   
 
