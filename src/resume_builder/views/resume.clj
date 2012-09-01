@@ -51,13 +51,11 @@
   )
 
 (defmethod section :BaseSection [type title & items]
-  (println "Called base!")
   (base-section type title items)
   )
 
                           
 (defmethod section :Experience [type title & positions]
-  (println "Experience")
   (base-section type title
                 positions))
 
@@ -65,9 +63,10 @@
   (base-section type title
                 objective-copy))
 
-(defmethod section :Skills [type title & skill-items]
-  (base-section type title
-                (unordered-list skill-items)))
+(defmethod section :Skills [type title & skill-items]  
+   (base-section type title
+                 (unordered-list skill-items))
+  )
 
 (defmethod section :Education [type title & schools]
   (base-section type title

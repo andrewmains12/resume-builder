@@ -1,4 +1,5 @@
 (ns resume-builder.views.my_resume
+  (:require [resume-builder.views.resume :as resume])
   (:use resume-builder.views.resume
         resume-builder.views.base-elements
         noir.core
@@ -32,9 +33,9 @@
              )
 
     (section :Skills "SKILLS AND TECHNOLOGIES"
-             ["Languages: Python, Java, C/C++, Ruby, SQL,  Scheme, R, Clojure (currently learning)"
-              "Technologies: Hadoop, Hive, Rails, Django, Noir, ANTLR, Bison/Flex"
-              ])
+             "Languages: Python, Java, C/C++, Ruby, SQL,  Scheme, R, Clojure (currently learning)"
+              "Technologies: Hadoop, Hive, Rails, Django, Noir, ANTLR, Bison/Flex"     
+              )
     (section :Experience "EXPERIENCE"
              (position (array-map
                         :company "Oracle"
