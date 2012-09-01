@@ -1,7 +1,5 @@
 # resume-builder
-
-A website written in noir. 
-
+NOT IN ANY WAY COMPLETE
 ## Usage
 
 ```bash
