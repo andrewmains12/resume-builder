@@ -1,0 +1,108 @@
+body { font-family: Helvetica; 
+   width: 8.5in;
+   height: 11in;
+   font-size: 12pt;
+}
+h1 { font-size: 32px; text-align: center; line-height: 0%}
+/* h2 { font-size: 20px; text-align: left;} */
+
+ul {
+   margin: inherit;
+   padding: 0;
+}
+
+/* . { */
+/*    line-height:0px; */
+/* } */
+/* * { */
+/*    line-height: 50%; */
+/* } */
+/*Center the address table */
+div#header table#contact {margin-left:auto; margin-right:auto;}
+div#header td#number {
+   /* border-style solid; */
+   border-right: 2px solid black;
+   line-height: 15px;
+   /* border-width: 100px; */
+}
+
+/* Affiliations */
+table.Affiliation {
+   line-height: 0px;
+   margin-right: 0px;
+   width: 8.5in;
+   /* padding-top: 0px; */
+}
+table.Affiliation h3 {
+   font-weight: bold;
+   font-size: 18px;
+   line-height: 0px;
+}
+
+/* Align sides of tables to their side. TODO: make this less hacky */
+table.Affiliation .Left {
+   text-align: left;
+}
+table.Affiliation .Right {
+   text-align: right;
+}
+
+div.Project h4 {
+   font-size: 15px;
+   font-weight: bold;
+   line-height: 0px;
+}
+
+div.Project ul {
+   margin-left: 5%;
+}
+
+/* Sections */
+
+div.Section div.Content {
+   text-align:left;
+   margin-left: 20px;
+}
+
+div.Section h2 {
+   font-size: 20px;
+   line-height: 1%;   
+   margin-left: 0px;
+}
+
+/* Education */
+div#education ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+div.Content > ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+div.Project {
+   margin-left: 2%;
+}
+/* div#objective p { */
+/*    margin-left: 20px; */
+/* } */
+
+span.gpa {
+   font-weight: bold;
+}
+
+#coursework ul{
+  width:760px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+#coursework li{
+   /* line-height:1.5em; */
+  /* border-bottom:1px solid #ccc; */
+   float:left;
+   display:inline;
+   width: 50%;
+}

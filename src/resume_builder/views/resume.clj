@@ -6,10 +6,11 @@
           noir.core hiccup.core hiccup.page hiccup.element hiccup.def
           ))
 
-
+(def style "/css/default.css")
 ;;The base of the resume document 
 (defpartial common [& content]
   (html5
+   [:head (include-css style)]
    [:body content
     ]
    )
@@ -30,15 +31,15 @@
    [:h1 resume-name]
    (table {:id "contact"}
           [address]
-          [number email]
-          )          
+          [[number {:id "number"}] email]
+    )          
    ]
   )
 
 (defpartial ^:private base-section [type title & items]
-  [:div {:class (str "Section " (name type))}
+  [:div {:class "Section" :id (string/lower-case (name type))}
    [:h2 title]
-   items
+   [:div.Content items]
    ]
   )
 
@@ -47,41 +48,59 @@
     type
     )
   :default
-  :BaseSection
+  ::BaseSection
   )
 
-(defmethod section :BaseSection [type title & items]
+(defmethod section ::BaseSection [type title & items]
   (base-section type title items)
   )
 
+(defmethod section ::ListSection [type title & list-items]  
+  (base-section type title
+                 (unordered-list list-items))
+   )
                           
-(defmethod section :Experience [type title & positions]
-  (base-section type title
-                positions))
+;; (defmethod section :Experience [type title & positions]
+;;   (base-section type title
+;;                 positions))
 
-(defmethod section :Objective [type title & objective-copy]
+(defmethod section ::Objective [type title & objective-copy]
   (base-section type title
-                objective-copy))
+                [:p objective-copy]))
 
-(defmethod section :Skills [type title & skill-items]  
-   (base-section type title
-                 (unordered-list skill-items))
-  )
 
-(defmethod section :Education [type title & schools]
-  (base-section type title
-                (unordered-list schools)))
+(derive ::Skills ::ListSection)
+(derive ::Education ::ListSection)
+(derive ::ClassProjects ::ListSection)
+(derive ::CourseWork ::ListSection)
+(derive ::Experience ::ListSection)
 
-(defmethod section :ClassProjects [type title & projects]
-  (base-section type title
-                (unordered-list projects)))
+
+;; (defmethod section :Skills [type title & skill-items]  
+;;    (base-section type title
+;;                  (unordered-list skill-items))
+;;   )
+
+
+;; (defmethod section :Education [type title & schools]
+;;   (base-section type title
+;;                 (unordered-list schools)))
+
+;; (defmethod section :ClassProjects [type title & projects]
+;;   (base-section type title
+;;                 (unordered-list projects)))
+
+;; (defmethod section :CourseWork [type title & classes]
+;;   (base-section type title
+;;                 (unordered-list classes)))
+
 
 (defpartial school [{:keys [institution location degree dates & gpa] :as info}]  
   [:div.School
    (affiliation
     institution
     location
-    (if gpa (str degree " " (html [:span.GPA gpa])) degree)
+    (if gpa (str degree " " (html [:span.gpa gpa])) degree)
     dates
     )
    ]

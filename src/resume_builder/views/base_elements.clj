@@ -21,9 +21,14 @@
    (for [row rows]
      [:tr
       (for [item row]
-        [:td item]
-        )]
-     )
+          (if (and (coll? item) (>= (count item) 2))
+            (let [[actual_item attrs] item]
+              (println attrs)
+              [:td attrs actual_item])
+            [:td item]
+            )
+          )
+      ])
    ])
 
 
@@ -33,8 +38,8 @@
     (str "Represents an affiliation between yourself and an institution (e.g. a" 
          "school or business")}
   (table {:class "Affiliation"}
-         [institution location]
-         [title date]
+         [[(html [:h3 institution]) {:class "Left"}] [location {:class "Right"}]]
+         [[title {:class "Left"}] [date {:class "Right"}]]
          )
   )
 
