@@ -23,7 +23,6 @@
       (for [item row]
           (if (and (coll? item) (>= (count item) 2))
             (let [[actual_item attrs] item]
-              (println attrs)
               [:td attrs actual_item])
             [:td item]
             )
