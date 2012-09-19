@@ -8,7 +8,7 @@
 
 (def style "/css/default.css")
 ;;The base of the resume document 
-(defpartial common [& content]
+(defpartial resume-wrapper [& content]
   (html5
    [:head (include-css style)]
    [:body content
@@ -17,7 +17,7 @@
 )
 
 (defpartial resume [header & sections]
-  (common
+  (resume-wrapper
    header
    (body-start)
    (string/join (sec-sep) sections)

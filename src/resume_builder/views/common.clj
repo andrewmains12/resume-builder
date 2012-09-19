@@ -1,8 +1,9 @@
+
 (ns resume-builder.views.common
   (:use [noir.core :only [defpartial]]
         [hiccup.page :only [include-css html5]]))
 
-(defpartial layout [& content]
+(defpartial normal-layout [& content]
             (html5
               [:head
                [:title "resume-builder"]
@@ -10,3 +11,5 @@
               [:body
                [:div#wrapper
                 content]]))
+
+

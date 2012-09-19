@@ -1,4 +1,4 @@
-(ns resume-builder.views.my_resume
+(ns resume-builder.views.resumes.compilers_resume
   (:require [resume-builder.views.resume :as resume])
   (:use resume-builder.views.resume
         resume-builder.views.base-elements
@@ -17,7 +17,7 @@
 
    ;;Sections   
     (section ::resume/Objective "OBJECTIVE"
-             "A full time software engineering position, ideally with a focus on language implementation/analysis or distributed systems."
+             "A full time software engineering position, ideally with a focus on compilers."
              )
 
     (section ::resume/Education "EDUCATION"
@@ -31,7 +31,7 @@
              )
 
     (section ::resume/Skills "SKILLS AND TECHNOLOGIES"
-             "Languages: Python, Java, C/C++, Ruby, SQL,  Scheme, R, Clojure (currently learning)"
+             "Languages: Python, Java, C/C++, Ruby, Clojure, SQL, Scheme, R"
               "Technologies: Hadoop, Hive, Rails, Django, Noir, ANTLR, Bison/Flex, OpenMP"     
               )
     (section ::resume/Experience "EXPERIENCE"
@@ -39,9 +39,9 @@
                         :company "Oracle"
                         :location "Redwood Shores"
                         :title "Software Engineering Intern"
-                        :dates"Summer 2012")
+                        :dates "Summer 2012")
 
-                       (project "Project: SAS to R Converter"
+                       (project "Project: SAS to R Compiler"
                                 [
                                  "Architected and implemented a translator from SAS to R from the ground up using ANTLR and Java"
                                  "Created a static analyzer for SAS in order to generate optimized R code."
@@ -56,8 +56,10 @@
                         :dates "Summer 2011")
                        (project "Project: Hive Interface"
                                 ["Wrote the Python server side of a web interface for Hive, using the Thrift API provided by Cloudera's Beeswax"                                                     "Wrote a UDF to calculate session times for users in games"])
-                       (project "Project: Testing"
-                                ["Created a blackbox testing framework for Kontagent's ETL system in Python"]))                                             
+                       (project "Project: ETL Testing"
+                                ["Created a regression testing framework for Kontagent's ETL system in Python"
+                                 
+                                 ]))                                             
              )
 
     (section ::resume/ClassProjects "CLASS PROJECTS"
@@ -71,7 +73,7 @@
                        "Helped implement two phase commit on the master server."
                        ]
                       )
-             (project "Virtual Memory for NachOS (Java)"
+             (project "Virtual Memory for NachOS Kernel (Java)"
                       ["Implemented process memory allocation and access"
                        "Prevented illegal memory accesses by processes"
                        ]

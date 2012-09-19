@@ -1,7 +1,8 @@
 (defproject resume-builder "0.1.0-SNAPSHOT"
-            :description "FIXME: write this!"
+            :description "A simple resume builder"
             :dependencies [[org.clojure/clojure "1.3.0"]
                            [noir "1.3.0-beta2"]
-                           [hiccup "1.0.0"]]
+                           [hiccup "1.0.0"]
+                           [fs "1.3.2"]]
             :main resume-builder.server)
 
