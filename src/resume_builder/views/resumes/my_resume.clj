@@ -9,10 +9,12 @@
 
 (defpartial the-resume []
   (resume
-   (header (array-map :resume-name "Andrew Robert Mains"
-                      :number "408-710-2521"
-                      :email "amains12@gmail.com"
-            )
+   (header "Andrew Robert Mains"
+           (contact (array-map
+                     :number "408-710-2521"
+                     :email "amains12@gmail.com"
+                     :portfolio "github.com/andrewmains12"
+                     ))
            )
 
    ;;Sections
@@ -32,23 +34,26 @@
 
     (section ::resume/Skills "SKILLS AND TECHNOLOGIES"
              "Languages: Python, Java, C/C++, Ruby, Clojure, SQL, Scheme, R"
-              "Technologies: Hadoop, Hive, HCatalog, Rails, Django, Noir, ANTLR, Bison/Flex, OpenMP"
-              )
+             "Technologies: Hadoop, Hive, HCatalog, ANTLR, Bison/Flex, OpenMP, MySQL, Django, Rails, Noir"
+             )
     (section ::resume/Experience "EXPERIENCE"
              (position (array-map
                         :company "Kontagent"
                         :location "San Francisco, CA"
                         :title "Software Engineer, Datastore Team"
                         :dates "February 2013-present")
-                       (project "Hive Robustness"
-                                ["Redesigned and implemented Kontagent's hive service, using webhcat"
-                                 "Improved fault tolerance and stability"
+                       (project "Datamine Hardening"
+                                ["Redesigned and implemented Kontagent's multitenant hive service, with a focus on fault tolerance"
+                                 "Implemented an asynchronous REST API for query execution using Django"
                                  "Implemented a rate limiting system for queries"
                                 ]
                                 )
+                       ;; (project "Scenario Toolkit"
+                       ;;          ["Maintained and extended Kontagent's full stack testing framework"
+                       ;;           "Added ability to impose a delay between the sending of messages"
+                       ;;           ]
+                       ;;          )
                        )
-             
-
              (position (array-map
                         :company "Oracle"
                         :location "Redwood Shores"
@@ -60,16 +65,15 @@
                                  "Architected and implemented a translator from SAS to R from the ground up using ANTLR and Java"
                                  "Created a static analyzer for SAS in order to generate optimized R code."
                                  ])
-
-
                        )
+
              (position (array-map
                         :company "Kontagent"
                         :location "San Francisco, CA"
                         :title "Software Engineering Intern"
                         :dates "Summer 2011")
                        (project "Project: Hive Interface"
-                                ["Wrote the Python server side of a web interface for Hive, using the Thrift API provided by Cloudera's Beeswax"                                                     "Wrote a UDF to calculate session times for users in games"])
+                                ["Wrote the Python server side of a REST interface for Hive, using the Thrift API provided by Cloudera's Beeswax"                                                     "Wrote a UDF to calculate session times for users in games"])
                        (project "Project: ETL Testing"
                                 ["Created a regression testing framework for Kontagent's ETL system in Python"
 
@@ -89,14 +93,13 @@
                       )
              )
 
-    (section ::resume/CourseWork "COURSEWORK"
+    (section ::resume/CourseWork "SELECTED COURSES"
              "CS162: Operating Systems"
              "CS164: Compilers"
              "CS170: Algorithms"
              "CS188: Artificial Intelligence"
              "CS186: Databases"
-    )
-
-
+             "CS169: Software Engineering"
+             )
     )
   )

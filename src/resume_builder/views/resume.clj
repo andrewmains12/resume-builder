@@ -1,5 +1,5 @@
 (ns resume-builder.views.resume
-    (:require [resume-builder.views.common :as common]             
+    (:require [resume-builder.views.common :as common]
               [clojure.string :as string]
               )
     (:use resume-builder.views.base-elements
@@ -7,7 +7,7 @@
           ))
 
 (def style "/css/default.css")
-;;The base of the resume document 
+;;The base of the resume document
 (defpartial resume-wrapper [& content]
   (html5
    [:head (include-css style)]
@@ -24,17 +24,24 @@
      )
   )
 
+(defpartial contact [{:keys [resume-name, address, number, email, portfolio]
+                      :as contact-info}]
 
-;;Want to arrange the elements                      
-(defpartial header [{:keys [resume-name, address, number, email] :as contact-info}]
-  [:div#header 
-   [:h1 resume-name]
    (table {:id "contact"}
           [address]
-          [[number {:id "number"}] email]
-    )          
-   ]
-  )
+          [[number {:id "number"}] email portfolio]
+    )
+   )
+
+
+;;Want to arrange the elements
+(defpartial header [resume-name content]
+  [:div#header
+   [:h1 resume-name]
+   content
+   ])
+
+
 
 (defpartial ^:private base-section [type title & items]
   [:div {:class "Section" :id (string/lower-case (name type))}
@@ -55,11 +62,11 @@
   (base-section type title items)
   )
 
-(defmethod section ::ListSection [type title & list-items]  
+(defmethod section ::ListSection [type title & list-items]
   (base-section type title
                  (unordered-list list-items))
    )
-                          
+
 ;; (defmethod section :Experience [type title & positions]
 ;;   (base-section type title
 ;;                 positions))
@@ -76,7 +83,7 @@
 (derive ::Experience ::ListSection)
 
 
-;; (defmethod section :Skills [type title & skill-items]  
+;; (defmethod section :Skills [type title & skill-items]
 ;;    (base-section type title
 ;;                  (unordered-list skill-items))
 ;;   )
@@ -95,7 +102,7 @@
 ;;                 (unordered-list classes)))
 
 
-(defpartial school [{:keys [institution location degree dates & gpa] :as info}]  
+(defpartial school [{:keys [institution location degree dates & gpa] :as info}]
   [:div.School
    (affiliation
     institution
@@ -106,11 +113,11 @@
    ]
   )
 
-  
+
 
 (defpartial position [{:keys [company location title dates]} & details]
   [:div.Position
-   (affiliation 
+   (affiliation
    company
    location
    title
@@ -124,10 +131,3 @@
    [:h4 title]
    (unordered-list accomplishments)
    ])
-
-
-       
-
-
-
-
