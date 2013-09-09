@@ -4,6 +4,7 @@
                            [noir "1.3.0-beta2"]
                            [hiccup "1.0.0"]
                            [fs "1.3.2"]
-                           [pathetic "0.4.0"]]
+                           [pathetic "0.4.0"]
+                           [org.clojure/clojure-contrib "1.2.0"]
+                           ]
             :main resume-builder.server)
-
