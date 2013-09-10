@@ -1,6 +1,7 @@
 (ns resume-builder.views.base-elements
     (:require [resume-builder.views.common :as common]
               [clojure.string :as string]
+              [clojure.contrib.seq-utils :as seq-utils]
               )
     (:use noir.core hiccup.core hiccup.page hiccup.element hiccup.def
           ))
@@ -30,28 +31,35 @@
       ])
    ])
 
-(defn labeled-table [table]
-  (let [height (count table)]
-    (for [[i row] (seq-utils/indexed table)]
-      (let [width (count row)]
-        (for [[j [_ attrs & rest]] (seq-utils/indexed row)]
-          (let [class (:class attrs "")]
-            (string/join  " "
-                          (cons class
-                                (-classes-for-pos [width height] [i j])))
-
-
-          )))))
-)
-
 (defn -classes-for-pos [[height width] [i j]]
   ^{:doc "List of CSS classes based on the position of a cell in a table"
     :private true}
   (filter (complement nil?)
           [(cond (= i (- height 1)) "table-bottom"
-                 (= i 0)      "table-top")
+                 (= i 0)            "table-top")
            (cond (= j (- width 1))  "table-right"
-                 (= j 0)      "table-left")]))
+                 (= j 0)            "table-left")]))
+
+
+(defn labeled-table [[table-tag rows]]
+  [table-tag
+   (let [height (count rows)]
+     (for [[i [row-tag row]] (seq-utils/indexed rows)]
+       [row-tag
+        (let [width (count row)]
+          (for [[j [cell-tag attrs & rest]] (seq-utils/indexed row)]
+            (concat
+             [cell-tag
+              (assoc attrs
+                :class
+                (string/join " "
+                             (concat (if (:class attrs) [(:class attrs)] [])
+                                     (-classes-for-pos [height width] [i j]))))]
+             rest)))
+        ]
+       ))
+   ])
+
 
 
 (defelem affiliation [institution location title date]
