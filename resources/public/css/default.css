@@ -19,12 +19,21 @@ ul {
 /* } */
 /*Center the address table */
 div#header table#contact {margin-left:auto; margin-right:auto;}
-div#header td {
+
+div#header td.table-horizontal-mid {
    /* border-style solid; */
    border-right: 2px solid black;
    line-height: 15px;
    /* border-width: 100px; */
 }
+
+div#header td.table-left {
+   /* border-style solid; */
+   border-right: 2px solid black;
+   line-height: 15px;
+   /* border-width: 100px; */
+}
+
 
 /* Affiliations */
 table.Affiliation {
@@ -40,10 +49,10 @@ table.Affiliation h3 {
 }
 
 /* Align sides of tables to their side. TODO: make this less hacky */
-table.Affiliation .Left {
+table.Affiliation td.table-left {
    text-align: left;
 }
-table.Affiliation .Right {
+table.Affiliation td.table-right {
    text-align: right;
 }
 

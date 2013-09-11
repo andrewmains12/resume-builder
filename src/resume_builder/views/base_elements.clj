@@ -34,40 +34,45 @@
 (defn -classes-for-pos [[height width] [i j]]
   ^{:doc "List of CSS classes based on the position of a cell in a table"
     :private true}
-  (filter (complement nil?)
-          [(cond (= i (- height 1)) "table-bottom"
-                 (= i 0)            "table-top")
-           (cond (= j (- width 1))  "table-right"
-                 (= j 0)            "table-left")]))
+
+  [(cond (= i (- height 1)) "table-bottom"
+         (= i 0)            "table-top"
+         :else                 "table-vert-mid")
+   (cond (= j (- width 1))  "table-right"
+         (= j 0)            "table-left"
+         :else              "table-horizontal-mid")])
 
 
-(defn labeled-table [[table-tag rows]]
+(defelem -labeled-table [[table-tag rows]]
   [table-tag
    (let [height (count rows)]
      (for [[i [row-tag row]] (seq-utils/indexed rows)]
        [row-tag
         (let [width (count row)]
           (for [[j [cell-tag attrs & rest]] (seq-utils/indexed row)]
-            (concat
-             [cell-tag
-              (assoc attrs
-                :class
-                (string/join " "
-                             (concat (if (:class attrs) [(:class attrs)] [])
-                                     (-classes-for-pos [height width] [i j]))))]
-             rest)))
-        ]
+            (into []
+                  (concat
+                     [cell-tag
+                      (assoc attrs
+                        :class
+                        (string/join " "
+                                     (concat (if (:class attrs) [(:class attrs)] [])
+                                             (-classes-for-pos [height width] [i j]))))]
+                     rest))))
+          ]
        ))
    ])
 
+(defelem labeled-table [& rows]
+ (-labeled-table (apply table rows)))
 
 
 (defelem affiliation [institution location title date]
   ^{:doc
     (str "Represents an affiliation between yourself and an institution (e.g. a"
          "school or business")}
-  (table {:class "Affiliation"}
-         [[(html [:h3 institution]) {:class "Left"}] [location {:class "Right"}]]
-         [[title {:class "Left"}] [date {:class "Right"}]]
+  (labeled-table {:class "Affiliation"}
+         [(html [:h3 institution]) location]
+         [title date]
          )
   )

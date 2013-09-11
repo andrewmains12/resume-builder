@@ -27,7 +27,7 @@
 (defpartial contact [{:keys [resume-name, address, number, email, portfolio]
                       :as contact-info}]
 
-   (table {:id "contact"}
+   (labeled-table {:id "contact"}
           [address]
           [[number {:id "number"}] email portfolio]
     )
