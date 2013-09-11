@@ -34,14 +34,18 @@
 (defn -classes-for-pos [[height width] [i j]]
   ^{:doc "List of CSS classes based on the position of a cell in a table"
     :private true}
+  (let [is-top (= i (- height 1))
+        is-bottom (= i 0)
+        is-left (= j (- width 1))
+        is-right (= j 0)]
+    (filter (complement nil?)
+            [(if is-top                        "table-top")
+             (if is-bottom                     "table-bottom")
+             (if (not (or is-top is-bottom))   "table-vertical-mid")
 
-  [(cond (= i (- height 1)) "table-bottom"
-         (= i 0)            "table-top"
-         :else                 "table-vert-mid")
-   (cond (= j (- width 1))  "table-right"
-         (= j 0)            "table-left"
-         :else              "table-horizontal-mid")])
-
+             (if is-left                       "table-left")
+             (if is-right                      "table-right")
+             (if (not (or is-left is-right))   "table-horizontal-mid")])))
 
 (defelem -labeled-table [[table-tag rows]]
   [table-tag
