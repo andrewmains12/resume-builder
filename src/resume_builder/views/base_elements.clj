@@ -67,12 +67,14 @@
  (-labeled-table (apply table rows)))
 
 
-(defelem affiliation [institution location title date]
+(defelem affiliation [institution location title date & extra-rows]
   ^{:doc
     (str "Represents an affiliation between yourself and an institution (e.g. a"
          "school or business")}
-  (labeled-table {:class "Affiliation"}
-         [(html [:h3 institution]) location]
-         [title date]
+  (apply labeled-table
+         (concat [{:class "Affiliation"}
+                  [(html [:h3 institution]) location]
+                  [title date]]
+                 extra-rows)
          )
   )

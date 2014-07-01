@@ -102,7 +102,7 @@
 ;;                 (unordered-list classes)))
 
 
-(defpartial school [{:keys [institution location degree dates & gpa] :as info}]
+(defpartial school [{:keys [institution location degree dates & gpa honors] :as info}]
   [:div.School
    (affiliation
     institution
