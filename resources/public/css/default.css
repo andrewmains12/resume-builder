@@ -3,7 +3,7 @@ body { font-family: Helvetica;
    height: 11in;
    font-size: 12pt;
 }
-h1 { font-size: 30px; text-align: center; line-height: 0%}
+h1 { font-size: 25px; text-align: center; line-height: 0%}
 /* h2 { font-size: 20px; text-align: left;} */
 
 ul {
@@ -30,7 +30,7 @@ div#header td.table-horizontal-mid {
 div#header td.table-left {
    /* border-style solid; */
    border-right: 2px solid black;
-   line-height: 15px;
+   line-height: 10px;
    /* border-width: 100px; */
 }
 
@@ -75,7 +75,7 @@ div.Section div.Content {
 
 div.Section h2 {
    font-size: 20px;
-   line-height: 1%;
+   line-height: 0%;
    margin-left: 0px;
 /*   margin-bottom: 1px;*/
 }
