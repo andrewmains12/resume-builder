@@ -30,11 +30,11 @@
             )
    (section ::resume/Skills "SKILLS AND TECHNOLOGIES"
             "Languages: Java, Python, C/C++, Ruby, Clojure, SQL, Scheme, R"
-            "Technologies: Hadoop, Hive, HBase, HCatalog, Salt, ANTLR, Bison/Flex, MySQL, Django, Jersey, Rails"
+            "Technologies: Hadoop, Hive, HBase, HCatalog, Saltstack, ANTLR, Bison/Flex, MySQL, Django, Jersey, Rails"
             )
    (section ::resume/Experience "EXPERIENCE"
             (position (array-map
-                       :company "Upsight (Kontagent)"
+                       :company "Upsight (formerly Kontagent)"
                        :location "San Francisco, CA"
                        :title "Software Engineer, Data Team"
                        :dates "February 2013-present")
@@ -42,9 +42,6 @@
                                ["Implemented a query system for multidimensional data on top of HBase with support for rollups, grouping and filtering"
                                 "Architected and implemented a REST API on top of the underlying query layer"
                                 ])
-                      (project "Vagrant Mini-Cluster (Vagrant, Salt, Hadoop)"
-                               ["Implemented a Salt orchestration to bring up a fully provisioned hadoop cluster automatically"
-                                "Successfully pushed for adoption of the local development environment across backend teams"])
                       (project "Datamine Hardening (Django, Hive, HCatalog)"
                                ["Led a team of 4 in redesigning and implementing an asynchronous REST API for Kontagent's multitenant hive service, focusing on reliability"
                                 "Patched Apache's WebHCat to support asynchronous submission of jobs to Hadoop's JobTracker"])
@@ -56,7 +53,7 @@
 
                       (project "SAS to R Compiler (ANTLR, Java)"
                                [
-                                "Architected and implemented a translator from SAS to R from the ground"
+                                "Architected and implemented a translator from SAS to R from the ground up"
                                 "Created a static analyzer for SAS in order to generate optimized R code."
                                 ])
                       )
@@ -70,12 +67,16 @@
                                ["Wrote the server side of a REST interface for Hive, using the Thrift API provided by Cloudera's Beeswax"
                                 "Wrote a UDF to calculate session times for users in games"]))
             )
-
-                      ;; (project "ETL Testing (Python)"
-                      ;;          ["Created a regression testing framework for Kontagent's ETL system in Python"
-
-                      ;;           ]))
             )
+
+   (section ::resume/ListSection "OPEN SOURCE CONTRIBUTIONS"
+            (project "Mapreduce over multiple HBase snapshots (HBASE-13356, HBase 1.2.0)"
+                     ["Implemented the ability to run mapreduce jobs over multiple scans on HBase snapshots"
+                      "Allowed for more fine grained push down of predicates to HBase, and thus better performance"])
+            (project "Hive predicate pushdown to multiple HBase scans (HIVE-7805)"
+                     ["Modified hive's HBase integration to push query predicates down to multiple scans"
+                      "Significantly reduced the amount of data scanned for hive queries on Upsight's raw data store"])
+)
 
    (section ::resume/ClassProjects "CLASS PROJECTS"
             (project "Python to C Compiler (Bison, Flex, C++)"
