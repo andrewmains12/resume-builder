@@ -107,7 +107,7 @@
    (affiliation
     institution
     location
-    (if gpa (str degree " " (html [:span.gpa gpa])) degree)
+    (if gpa (str degree ", " (html [:span.gpa gpa])) degree)
     dates
     )
    ]

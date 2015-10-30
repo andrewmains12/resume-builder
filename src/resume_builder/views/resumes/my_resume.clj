@@ -22,14 +22,14 @@
             (school (array-map
                      :institution "UC Berkeley, December 2012"
                      :location "Berkeley, CA"
-                     :degree "B.A., Computer Science, Cognitive Science"
+                     :degree "B.A. Computer Science & Cognitive Science"
                      :gpa "GPA: 3.75"
                      :honors "Upsilon Pi Epsilon CS Honors Society, 2012-2013"
                      )
                     )
             )
    (section ::resume/Skills "SKILLS AND TECHNOLOGIES"
-            "Languages: Java, Python, C/C++, Ruby, Clojure, SQL, Scheme, R"
+            "Languages: Java, Python, Scala, C/C++, Ruby, Clojure, SQL, Scheme, R"
             "Technologies: Hadoop, Hive, HBase, HCatalog, Saltstack, ANTLR, Bison/Flex, MySQL, Django, Jersey, Rails"
             )
    (section ::resume/Experience "EXPERIENCE"
@@ -47,7 +47,7 @@
                                 "Patched Apache's WebHCat to support asynchronous submission of jobs to Hadoop's JobTracker"])
             (position (array-map
                        :company "Oracle"
-                       :location "Redwood Shores"
+                       :location "Redwood Shores, CA"
                        :title "Software Engineering Intern"
                        :dates "Summer 2012")
 
@@ -74,7 +74,7 @@
                      ["Implemented the ability to run mapreduce jobs over multiple scans on HBase snapshots"
                       "Allowed for more fine grained push down of predicates to HBase, and thus better performance"])
             (project "Hive predicate pushdown to multiple HBase scans (HIVE-7805)"
-                     ["Modified hive's HBase integration to push query predicates down to multiple scans"
+                     ["Modified Hive's HBase integration to push query predicates down to multiple scans"
                       "Significantly reduced the amount of data scanned for hive queries on Upsight's raw data store"])
 )
 
