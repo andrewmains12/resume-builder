@@ -37,7 +37,7 @@
             (position (array-map
                        :company "Uber"
                        :location "San Francisco, CA"
-                       :title "Software Engineer, Marketplace Continuity"
+                       :title "Software Engineer II, Marketplace Continuity"
                        :dates "January 2016-present")
                       (project "Flipr: Dynamic Configuration"
                                ["Fullstack development on Uber's dynamic configuration service"]))
