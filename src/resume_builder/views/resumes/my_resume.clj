@@ -20,11 +20,12 @@
    ;;Sections
    (section ::resume/Education "EDUCATION"
             (school (array-map
-                     :institution "UC Berkeley, December 2012"
+                     :institution "UC Berkeley"
                      :location "Berkeley, CA"
                      :degree "B.A. Computer Science & Cognitive Science"
                      :gpa "GPA: 3.75"
                      :honors "Upsilon Pi Epsilon CS Honors Society, 2012-2013"
+                     :dates "December, 2012"
                      )
                     )
             )
@@ -89,16 +90,16 @@
                       "Significantly reduced the amount of data scanned for hive queries on Upsight's raw data store"])
 )
 
-   (section ::resume/ClassProjects "CLASS PROJECTS"
-            (project "Python to C Compiler (Bison, Flex, C++)"
-                     ["Led a team of four in implementing a 3-stage compiler and runtime environment for a statically typed Python subset"
-                      "Implemented support for type inference, lexical closures and first class functions."
-                      ])
-            (project "Distributed Key Value Store (Java)"
-                     ["Implemented the client and networking logic"
-                      "Helped implement two phase commit on the master server."
-                      ]
-                     ))
+   ;; (section ::resume/ClassProjects "CLASS PROJECTS"
+   ;;          (project "Python to C Compiler (Bison, Flex, C++)"
+   ;;                   ["Led a team of four in implementing a 3-stage compiler and runtime environment for a statically typed Python subset"
+   ;;                    "Implemented support for type inference, lexical closures and first class functions."
+   ;;                    ])
+   ;;          (project "Distributed Key Value Store (Java)"
+   ;;                   ["Implemented the client and networking logic"
+   ;;                    "Helped implement two phase commit on the master server."
+   ;;                    ]
+   ;;                   ))
 
    (section ::resume/CourseWork "SELECTED COURSES"
             "CS162: Operating Systems"

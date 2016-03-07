@@ -11,6 +11,7 @@ ul {
    padding: 0;
 }
 
+
 /* . { */
 /*    line-height:0px; */
 /* } */
@@ -20,20 +21,31 @@ ul {
 /*Center the address table */
 div#header table#contact {margin-left:auto; margin-right:auto;}
 
+div#header td {
+    padding-right: 4px;
+    padding-left: 4px;
+}
 div#header td.table-horizontal-mid {
    /* border-style solid; */
-   border-right: 2px solid black;
-   line-height: 15px;
+    border-right: 2px solid black;
+    line-height: 15px;
    /* border-width: 100px; */
 }
 
 div#header td.table-left {
    /* border-style solid; */
-   border-right: 2px solid black;
-   line-height: 10px;
+    border-right: 2px solid black;
+    line-height: 10px;
    /* border-width: 100px; */
 }
 
+div.Position {
+    margin-top: 2.5px;
+}
+
+div.Project h4 {
+    margin-bottom: 10px;
+}
 
 /* Affiliations */
 table.Affiliation {
@@ -80,7 +92,11 @@ div.Section h2 {
    font-size: 20px;
    line-height: 0%;
    margin-left: 0px;
-/*   margin-bottom: 1px;*/
+   margin-bottom: 5px;
+}
+
+div.Content {
+    margin-top: 10px;
 }
 
 /* Education */
