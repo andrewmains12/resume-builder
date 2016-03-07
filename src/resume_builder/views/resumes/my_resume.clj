@@ -34,17 +34,29 @@
             )
    (section ::resume/Experience "EXPERIENCE"
             (position (array-map
+                       :company "Uber"
+                       :location "San Francisco, CA"
+                       :title "Software Engineer, Marketplace Continuity"
+                       :dates "January 2016-present")
+                      (project "Flipr: Dynamic Configuration"
+                               ["Fullstack development on Uber's dynamic configuration service"]))
+            (position (array-map
                        :company "Upsight (formerly Kontagent)"
                        :location "San Francisco, CA"
-                       :title "Software Engineer, Data Team"
-                       :dates "February 2013-present")
+                       :roles [{:title "Senior Software Engineer, Data Team"
+                                :dates "August 2014-December 2015"}
+                               {:title "Software Engineer, Data Team"
+                                :dates "February 2013-August 2014"}]
+                       :dates "February 2013-December 2015"
+                       )
                       (project "Tesseract: OLAP over HBase (Java, HBase, Jersey)"
                                ["Implemented a query system for multidimensional data on top of HBase with support for rollups, grouping and filtering"
+                                "Implemented an HBase coprocessor to distribute query execution across regionservers"
                                 "Architected and implemented a REST API on top of the underlying query layer"
                                 ])
                       (project "Datamine Hardening (Django, Hive, HCatalog)"
                                ["Led a team of 4 in redesigning and implementing an asynchronous REST API for Kontagent's multitenant hive service, focusing on reliability"
-                                "Patched Apache's WebHCat to support asynchronous submission of jobs to Hadoop's JobTracker"])
+                                "Patched Apache's WebHCat to support asynchronous submission of jobs to Hadoop's JobTracker"]))
             (position (array-map
                        :company "Oracle"
                        :location "Redwood Shores, CA"
@@ -67,7 +79,6 @@
                                ["Wrote the server side of a REST interface for Hive, using the Thrift API provided by Cloudera's Beeswax"
                                 "Wrote a UDF to calculate session times for users in games"]))
             )
-            )
 
    (section ::resume/ListSection "OPEN SOURCE CONTRIBUTIONS"
             (project "Mapreduce over multiple HBase snapshots (HBASE-13356, HBase 1.2.0)"
@@ -87,8 +98,7 @@
                      ["Implemented the client and networking logic"
                       "Helped implement two phase commit on the master server."
                       ]
-                     )
-            )
+                     ))
 
    (section ::resume/CourseWork "SELECTED COURSES"
             "CS162: Operating Systems"

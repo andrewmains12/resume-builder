@@ -107,24 +107,26 @@
    (affiliation
     institution
     location
-    (if gpa (str degree ", " (html [:span.gpa gpa])) degree)
-    dates
+    [(if gpa (str degree ", " (html [:span.gpa gpa])) degree)
+      dates]
     )
    ]
   )
 
 
-
-(defpartial position [{:keys [company location title dates]} & details]
-  [:div.Position
-   (affiliation
-   company
-   location
-   title
-   dates)
-   details
-   ]
-  )
+(defpartial position [{:keys [company location title dates roles]} & details]
+  (let [roles (or roles [{:title title :dates dates}])]
+    [:div.Position
+     (apply affiliation
+            (concat
+             [company
+              location]
+             (for [{role-title :title, role-dates :dates} roles]
+               [[role-title {:class "role title"}]
+                [role-dates {:class "role dates"}]])))
+     details
+     ]
+    ))
 
 (defelem project [title accomplishments]
   [:div.Project

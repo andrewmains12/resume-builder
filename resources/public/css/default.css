@@ -56,6 +56,10 @@ table.Affiliation td.table-right {
    text-align: right;
 }
 
+table.Affiliation .role.table-vert-mid {
+    padding-bottom: 20px;
+}
+
 div.Project h4 {
    font-size: 15px;
    font-weight: bold;
@@ -67,7 +71,6 @@ div.Project ul {
 }
 
 /* Sections */
-
 div.Section div.Content {
    text-align:left;
    margin-left: 20px;
