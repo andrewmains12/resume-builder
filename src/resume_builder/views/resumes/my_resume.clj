@@ -6,6 +6,7 @@
         )
   )
 
+(derive ::OpenSource ::ListSection)
 
 (defpartial the-resume []
   (resume
@@ -30,17 +31,30 @@
                     )
             )
    (section ::resume/Skills "SKILLS AND TECHNOLOGIES"
-            "Languages: Java, Python, Scala, C/C++, Ruby, Clojure, SQL, Scheme, R"
+            "Languages: Java, Go, Python, Scala, C/C++, Ruby, Clojure, SQL, Scheme"
             "Technologies: Hadoop, Hive, HBase, HCatalog, Saltstack, ANTLR, Bison/Flex, MySQL, Django, Jersey, Rails"
             )
    (section ::resume/Experience "EXPERIENCE"
             (position (array-map
                        :company "Uber"
                        :location "San Francisco, CA"
-                       :title "Software Engineer II, Marketplace Continuity"
-                       :dates "January 2016-present")
-                      (project "Flipr: Dynamic Configuration"
-                               ["Fullstack development on Uber's dynamic configuration service"]))
+                       :roles [{:title "Senior Engineer, Configuration Platform"
+                                :dates "March 2018-present"}
+                               {:title "Engineer II, Configuration Platform"
+                                :dates "January 2016-March 2018"}
+                               ])
+                      (project "Flipr: UCS Migration (Go)"
+                               ["Designed and implemented a seamless migration path to move Flipr's configuration pushing system to a revamped backend."
+                                "Wrote the specification and worked with a junior engineer to implement ucs-monitor, which verified the integrity of the migration."
+                       ])
+
+                      (project "Flipr: Incremental Rollout (Python)"
+                               [
+                                "Designed and implemented a system to allow users to roll out their configuration changes gradually."
+                                "Wrote all of the backend API's for the rollout engine, including rollout state management and support for flexible rollout strategies."
+                                "Provided weekly status updates to stakeholders, coordinating the project with a broader initiative to prevent global changes at Uber."
+                                ]))
+
             (position (array-map
                        :company "Upsight (formerly Kontagent)"
                        :location "San Francisco, CA"
@@ -71,17 +85,17 @@
                                 ])
                       )
 
-            (position (array-map
-                       :company "Kontagent"
-                       :location "San Francisco, CA"
-                       :title "Software Engineering Intern"
-                       :dates "Summer 2011")
-                      (project "Hive Interface (Python, Hive)"
-                               ["Wrote the server side of a REST interface for Hive, using the Thrift API provided by Cloudera's Beeswax"
-                                "Wrote a UDF to calculate session times for users in games"]))
+            ;; (position (array-map
+            ;;            :company "Kontagent"
+            ;;            :location "San Francisco, CA"
+            ;;            :title "Software Engineering Intern"
+            ;;            :dates "Summer 2011")
+            ;;           (project "Hive Interface (Python, Hive)"
+            ;;                    ["Wrote the server side of a REST interface for Hive, using the Thrift API provided by Cloudera's Beeswax"
+            ;;                     "Wrote a UDF to calculate session times for users in games"]))
             )
 
-   (section ::resume/ListSection "OPEN SOURCE CONTRIBUTIONS"
+   (section ::OpenSource "OPEN SOURCE CONTRIBUTIONS"
             (project "Mapreduce over multiple HBase snapshots (HBASE-13356, HBase 1.2.0)"
                      ["Implemented the ability to run mapreduce jobs over multiple scans on HBase snapshots"
                       "Allowed for more fine grained push down of predicates to HBase, and thus better performance"])
@@ -101,13 +115,13 @@
    ;;                    ]
    ;;                   ))
 
-   (section ::resume/CourseWork "SELECTED COURSES"
-            "CS162: Operating Systems"
-            "CS164: Compilers"
-            "CS170: Algorithms"
-            "CS188: Artificial Intelligence"
-            "CS186: Databases"
-            "CS169: Software Engineering"
-            )
+   ;; (section ::resume/CourseWork "SELECTED COURSES"
+   ;;          "CS162: Operating Systems"
+   ;;          "CS164: Compilers"
+   ;;          "CS170: Algorithms"
+   ;;          "CS188: Artificial Intelligence"
+   ;;          "CS186: Databases"
+   ;;          "CS169: Software Engineering"
+   ;;          )
    )
   )
